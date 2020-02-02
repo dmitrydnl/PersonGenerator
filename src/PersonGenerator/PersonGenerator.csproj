@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <Authors>dmitrydnl</Authors>
+    <PackageId>PersonGenerator</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Description>Person generator</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.5-dev.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Builder\" />
+  </ItemGroup>
+</Project>
