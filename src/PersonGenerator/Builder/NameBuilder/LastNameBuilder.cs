@@ -1,4 +1,4 @@
-﻿namespace PersonGenerator.Builder
+﻿namespace PersonGenerator.Builder.NameBuilder
 {
     public class LastNameBuilder: INameBuilder
     {

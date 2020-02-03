@@ -17,5 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Builder\" />
+    <Folder Include="Builder\NameBuilder\" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace PersonGenerator.Builder
+﻿using PersonGenerator.Builder.NameBuilder;
+
+namespace PersonGenerator.Builder
 {
     public class PersonBuilder: IPersonBuilder
     {
