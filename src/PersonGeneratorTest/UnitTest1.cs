@@ -18,7 +18,10 @@ namespace PersonGeneratorTest
             {
                 Language = Languages.English,
                 FirstName = true,
-                LastName = true
+                LastName = true,
+                Age = true,
+                MinAge = 20,
+                MaxAge = 35
             };
 
             PersonGenerator.PersonGenerator personGenerator = new PersonGenerator.PersonGenerator(settings);

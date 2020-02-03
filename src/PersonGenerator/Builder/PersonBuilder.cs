@@ -1,4 +1,5 @@
 ﻿using PersonGenerator.Builder.NameBuilder;
+using PersonGenerator.Builder.NumberBuilder;
 
 namespace PersonGenerator.Builder
 {
@@ -6,6 +7,7 @@ namespace PersonGenerator.Builder
     {
         private readonly INameBuilder firstNameBuilder;
         private readonly INameBuilder lastNameBuilder;
+        private readonly INumberBuilder ageBuilder;
 
         public PersonBuilder(GeneratorSettings settings)
         {
@@ -26,6 +28,15 @@ namespace PersonGenerator.Builder
             {
                 lastNameBuilder = new EmptyNameBuilder();
             }
+
+            if (settings.Age)
+            {
+                ageBuilder = new AgeBuilder(settings);
+            }
+            else
+            {
+                ageBuilder = new EmptyNumberBuilder();
+            }
         }
 
         public Person Build()
@@ -33,7 +44,8 @@ namespace PersonGenerator.Builder
             Person person = new Person
             {
                 FirstName = firstNameBuilder.Build(),
-                LastName = lastNameBuilder.Build()
+                LastName = lastNameBuilder.Build(),
+                Age = ageBuilder.Build()
             };
 
             return person;

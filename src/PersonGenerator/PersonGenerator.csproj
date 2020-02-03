@@ -22,6 +22,7 @@
     <Folder Include="Data\english\" />
     <Folder Include="WorkWithData\" />
     <Folder Include="Random\" />
+    <Folder Include="Builder\NumberBuilder\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\english\first_name.txt" />
