@@ -8,6 +8,7 @@ namespace PersonGenerator
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public void Print()
         {
@@ -26,6 +27,7 @@ namespace PersonGenerator
         private void PrintAge()
         {
             Console.WriteLine("Age: " + Age);
+            Console.WriteLine("Birth date: " + BirthDate.ToShortDateString());
         }
     }
 }
