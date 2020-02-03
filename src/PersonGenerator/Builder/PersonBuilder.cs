@@ -8,6 +8,7 @@ namespace PersonGenerator.Builder
     public class PersonBuilder: IPersonBuilder
     {
         private readonly INameBuilder firstNameBuilder;
+        private readonly INameBuilder middleNameBuilder;
         private readonly INameBuilder lastNameBuilder;
         private readonly INumberBuilder ageBuilder;
         private readonly IDateBuilder birthDateBuilder;
@@ -21,6 +22,15 @@ namespace PersonGenerator.Builder
             else
             {
                 firstNameBuilder = new EmptyNameBuilder();
+            }
+
+            if (settings.MiddleName)
+            {
+                middleNameBuilder = new MiddleNameBuilder(settings);
+            }
+            else
+            {
+                middleNameBuilder = new EmptyNameBuilder();
             }
 
             if (settings.LastName)
@@ -47,12 +57,14 @@ namespace PersonGenerator.Builder
         public Person Build()
         {
             string firstName = firstNameBuilder.Build();
+            string middleName = middleNameBuilder.Build();
             string lastName = lastNameBuilder.Build();
             int age = ageBuilder.Build();
             DateTime birthDate = BirthDateUpdateYear(birthDateBuilder.Build(), age);
             Person person = new Person
             {
                 FirstName = firstName,
+                MiddleName = middleName,
                 LastName = lastName,
                 Age = age,
                 BirthDate = birthDate

@@ -19,6 +19,7 @@ namespace PersonGeneratorTest
             {
                 Language = Languages.English,
                 FirstName = true,
+                MiddleName = true,
                 LastName = true,
                 Age = true,
                 MinAge = 20,
