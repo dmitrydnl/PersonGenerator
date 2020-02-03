@@ -1,21 +1,22 @@
-﻿using PersonGenerator.WorkWithData;
+﻿using System.Collections.Generic;
+using PersonGenerator.WorkWithData;
+using PersonGenerator.Random;
 
 namespace PersonGenerator.Builder.NameBuilder
 {
     public class FirstNameBuilder: INameBuilder
     {
-        private readonly GeneratorSettings settings;
         private readonly DataReader dataReader;
 
         public FirstNameBuilder(GeneratorSettings settings)
         {
-            this.settings = settings;
             dataReader = new DataReader(settings.Language, "first_name.txt");
         }
 
         public string Build()
         {
-            return "FirstName";
+            List<string> names = dataReader.ReadToList();
+            return ListRandom.GetRandomElement(names);
         }
     }
 }
