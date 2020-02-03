@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using PersonGenerator;
@@ -29,6 +30,7 @@ namespace PersonGeneratorTest
             foreach (Person person in people)
             {
                 person.Print();
+                Console.WriteLine();
             }
 
             Assert.Pass();
