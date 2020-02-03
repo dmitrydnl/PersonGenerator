@@ -20,6 +20,7 @@
     <Folder Include="Builder\NameBuilder\" />
     <Folder Include="Data\" />
     <Folder Include="Data\english\" />
+    <Folder Include="WorkWithData\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\english\first_name.txt" />
