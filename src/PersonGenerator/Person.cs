@@ -10,11 +10,13 @@ namespace PersonGenerator
         public string LastName { get; set; }
         public int Age { get; set; }
         public DateTime BirthDate { get; set; }
+        public string Email { get; set; }
 
         public void Print()
         {
             PrintName();
             PrintAge();
+            PrintEmail();
         }
 
         private void PrintName()
@@ -30,6 +32,14 @@ namespace PersonGenerator
         {
             Console.WriteLine("Age: " + Age);
             Console.WriteLine("Birth date: " + BirthDate.ToShortDateString());
+        }
+
+        private void PrintEmail()
+        {
+            if (!string.IsNullOrEmpty(Email))
+            {
+                Console.WriteLine("Email: " + Email);
+            }
         }
     }
 }

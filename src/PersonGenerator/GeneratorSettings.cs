@@ -9,5 +9,6 @@
         public bool Age { get; set; }
         public int MinAge { get; set; }
         public int MaxAge { get; set; }
+        public bool Email { get; set; }
     }
 }

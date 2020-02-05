@@ -23,7 +23,8 @@ namespace PersonGeneratorTest
                 LastName = true,
                 Age = true,
                 MinAge = 20,
-                MaxAge = 35
+                MaxAge = 35,
+                Email = true
             };
 
             PersonGenerator.PersonGenerator personGenerator = new PersonGenerator.PersonGenerator(settings);

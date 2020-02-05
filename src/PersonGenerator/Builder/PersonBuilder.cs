@@ -2,6 +2,7 @@
 using PersonGenerator.Builder.NameBuilder;
 using PersonGenerator.Builder.NumberBuilder;
 using PersonGenerator.Builder.DateBuilder;
+using PersonGenerator.Builder.EmailBuilder;
 
 namespace PersonGenerator.Builder
 {
@@ -12,6 +13,7 @@ namespace PersonGenerator.Builder
         private readonly INameBuilder lastNameBuilder;
         private readonly INumberBuilder ageBuilder;
         private readonly IDateBuilder birthDateBuilder;
+        private readonly IEmailBuilder emailBuilder;
 
         public PersonBuilder(GeneratorSettings settings)
         {
@@ -52,6 +54,15 @@ namespace PersonGenerator.Builder
                 ageBuilder = new EmptyNumberBuilder();
                 birthDateBuilder = new EmptyDateBuilder();
             }
+
+            if (settings.Email)
+            {
+                emailBuilder = new HomeEmailBuilder();
+            }
+            else
+            {
+                emailBuilder = new EmptyEmailBuilder();
+            }
         }
 
         public Person Build()
@@ -61,13 +72,15 @@ namespace PersonGenerator.Builder
             string lastName = lastNameBuilder.Build();
             int age = ageBuilder.Build();
             DateTime birthDate = BirthDateUpdateYear(birthDateBuilder.Build(), age);
+            string email = emailBuilder.Build();
             Person person = new Person
             {
                 FirstName = firstName,
                 MiddleName = middleName,
                 LastName = lastName,
                 Age = age,
-                BirthDate = birthDate
+                BirthDate = birthDate,
+                Email = email
             };
             return person;
         }
