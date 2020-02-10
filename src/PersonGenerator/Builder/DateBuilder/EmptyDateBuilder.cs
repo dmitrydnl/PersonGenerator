@@ -2,7 +2,7 @@
 
 namespace PersonGenerator.Builder.DateBuilder
 {
-    public class EmptyDateBuilder: IDateBuilder
+    internal class EmptyDateBuilder : IDateBuilder
     {
         public DateTime Build()
         {

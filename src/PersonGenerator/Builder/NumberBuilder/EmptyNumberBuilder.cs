@@ -1,6 +1,6 @@
 ﻿namespace PersonGenerator.Builder.NumberBuilder
 {
-    public class EmptyNumberBuilder: INumberBuilder
+    internal class EmptyNumberBuilder : INumberBuilder
     {
         public int Build()
         {

@@ -1,6 +1,6 @@
 ﻿namespace PersonGenerator.Builder.EmailBuilder
 {
-    public class EmptyEmailBuilder: IEmailBuilder
+    internal class EmptyEmailBuilder : IEmailBuilder
     {
         public string Build()
         {

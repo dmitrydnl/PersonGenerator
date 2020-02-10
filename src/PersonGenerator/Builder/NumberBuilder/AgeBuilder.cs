@@ -2,11 +2,11 @@
 
 namespace PersonGenerator.Builder.NumberBuilder
 {
-    public class AgeBuilder: INumberBuilder
+    internal class AgeBuilder : INumberBuilder
     {
         private readonly GeneratorSettings settings;
 
-        public AgeBuilder(GeneratorSettings settings)
+        internal AgeBuilder(GeneratorSettings settings)
         {
             this.settings = settings;
         }

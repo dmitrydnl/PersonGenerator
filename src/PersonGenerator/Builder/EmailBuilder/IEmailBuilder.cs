@@ -1,6 +1,6 @@
 ﻿namespace PersonGenerator.Builder.EmailBuilder
 {
-    public interface IEmailBuilder
+    internal interface IEmailBuilder
     {
         public string Build();
         public string BuildWithParams(params string[] list);

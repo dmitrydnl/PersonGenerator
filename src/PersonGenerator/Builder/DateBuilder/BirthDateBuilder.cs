@@ -3,7 +3,7 @@ using PersonGenerator.Random;
 
 namespace PersonGenerator.Builder.DateBuilder
 {
-    public class BirthDateBuilder: IDateBuilder
+    internal class BirthDateBuilder : IDateBuilder
     {
         public DateTime Build()
         {

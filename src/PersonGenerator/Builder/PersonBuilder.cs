@@ -6,7 +6,7 @@ using PersonGenerator.Builder.EmailBuilder;
 
 namespace PersonGenerator.Builder
 {
-    public class PersonBuilder: IPersonBuilder
+    internal class PersonBuilder : IPersonBuilder
     {
         private readonly INameBuilder firstNameBuilder;
         private readonly INameBuilder middleNameBuilder;
@@ -15,7 +15,7 @@ namespace PersonGenerator.Builder
         private readonly IDateBuilder birthDateBuilder;
         private readonly IEmailBuilder emailBuilder;
 
-        public PersonBuilder(GeneratorSettings settings)
+        internal PersonBuilder(GeneratorSettings settings)
         {
             firstNameBuilder = GetFirstNameBuilder(settings);
             middleNameBuilder = GetMiddleNameBuilder(settings);

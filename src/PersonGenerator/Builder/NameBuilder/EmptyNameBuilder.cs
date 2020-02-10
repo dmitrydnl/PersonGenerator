@@ -1,6 +1,6 @@
 ﻿namespace PersonGenerator.Builder.NameBuilder
 {
-    public class EmptyNameBuilder: INameBuilder
+    internal class EmptyNameBuilder : INameBuilder
     {
         public string Build()
         {

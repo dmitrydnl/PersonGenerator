@@ -1,6 +1,6 @@
 ﻿namespace PersonGenerator.Builder
 {
-    public interface IPersonBuilder
+    internal interface IPersonBuilder
     {
         public Person Build();
     }

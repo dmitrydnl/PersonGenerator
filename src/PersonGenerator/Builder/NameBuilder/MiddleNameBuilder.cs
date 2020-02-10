@@ -4,11 +4,11 @@ using PersonGenerator.Random;
 
 namespace PersonGenerator.Builder.NameBuilder
 {
-    public class MiddleNameBuilder: INameBuilder
+    internal class MiddleNameBuilder : INameBuilder
     {
         private readonly DataReader dataReader;
 
-        public MiddleNameBuilder(GeneratorSettings settings)
+        internal MiddleNameBuilder(GeneratorSettings settings)
         {
             dataReader = new DataReader(settings.Language, "middle_name.txt");
         }

@@ -2,7 +2,7 @@
 
 namespace PersonGenerator.Builder.EmailBuilder
 {
-    public class HomeEmailBuilder: IEmailBuilder
+    internal class HomeEmailBuilder : IEmailBuilder
     {
         public string Build()
         {
