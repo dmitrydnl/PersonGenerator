@@ -6,5 +6,10 @@
         {
             return null;
         }
+
+        public string BuildWithParams(params string[] list)
+        {
+            return null;
+        }
     }
 }

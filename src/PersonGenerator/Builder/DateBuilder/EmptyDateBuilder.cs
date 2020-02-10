@@ -8,5 +8,10 @@ namespace PersonGenerator.Builder.DateBuilder
         {
             return DateTime.Now;
         }
+
+        public DateTime BuildWithParams(params int[] list)
+        {
+            return DateTime.Now;
+        }
     }
 }

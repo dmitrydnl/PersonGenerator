@@ -17,52 +17,12 @@ namespace PersonGenerator.Builder
 
         public PersonBuilder(GeneratorSettings settings)
         {
-            if (settings.FirstName)
-            {
-                firstNameBuilder = new FirstNameBuilder(settings);
-            }
-            else
-            {
-                firstNameBuilder = new EmptyNameBuilder();
-            }
-
-            if (settings.MiddleName)
-            {
-                middleNameBuilder = new MiddleNameBuilder(settings);
-            }
-            else
-            {
-                middleNameBuilder = new EmptyNameBuilder();
-            }
-
-            if (settings.LastName)
-            {
-                lastNameBuilder = new LastNameBuilder(settings);
-            }
-            else
-            {
-                lastNameBuilder = new EmptyNameBuilder();
-            }
-
-            if (settings.Age)
-            {
-                ageBuilder = new AgeBuilder(settings);
-                birthDateBuilder = new BirthDateBuilder();
-            }
-            else
-            {
-                ageBuilder = new EmptyNumberBuilder();
-                birthDateBuilder = new EmptyDateBuilder();
-            }
-
-            if (settings.Email)
-            {
-                emailBuilder = new HomeEmailBuilder();
-            }
-            else
-            {
-                emailBuilder = new EmptyEmailBuilder();
-            }
+            firstNameBuilder = GetFirstNameBuilder(settings);
+            middleNameBuilder = GetMiddleNameBuilder(settings);
+            lastNameBuilder = GetLastNameBuilder(settings);
+            ageBuilder = GetAgeBuilder(settings);
+            birthDateBuilder = GetBirthDateBuilder(settings);
+            emailBuilder = GetEmailBuilder(settings);
         }
 
         public Person Build()
@@ -71,9 +31,10 @@ namespace PersonGenerator.Builder
             string middleName = middleNameBuilder.Build();
             string lastName = lastNameBuilder.Build();
             int age = ageBuilder.Build();
-            DateTime birthDate = BirthDateUpdateYear(birthDateBuilder.Build(), age);
-            string email = emailBuilder.Build();
-            Person person = new Person
+            DateTime birthDate = birthDateBuilder.BuildWithParams(age);
+            string email = emailBuilder.BuildWithParams(firstName, lastName, age.ToString());
+
+            return new Person
             {
                 FirstName = firstName,
                 MiddleName = middleName,
@@ -82,23 +43,66 @@ namespace PersonGenerator.Builder
                 BirthDate = birthDate,
                 Email = email
             };
-            return person;
         }
 
-        private DateTime BirthDateUpdateYear(DateTime birthDate, int age)
+        private INameBuilder GetFirstNameBuilder(GeneratorSettings settings)
         {
-            DateTime newBirthDate;
-            DateTime now = DateTime.Now;
-            if (now.Month > birthDate.Month || (now.Month == birthDate.Month && now.Day >= birthDate.Day))
+            if (settings.FirstName)
             {
-                newBirthDate = birthDate.AddYears(now.Year - birthDate.Year - age);
-            }
-            else
-            {
-                newBirthDate = birthDate.AddYears(now.Year - birthDate.Year - age - 1);
+                return new FirstNameBuilder(settings);
             }
 
-            return newBirthDate;
+            return new EmptyNameBuilder();
+        }
+
+        private INameBuilder GetMiddleNameBuilder(GeneratorSettings settings)
+        {
+            if (settings.MiddleName)
+            {
+                return new MiddleNameBuilder(settings);
+            }
+
+            return new EmptyNameBuilder();
+        }
+
+        private INameBuilder GetLastNameBuilder(GeneratorSettings settings)
+        {
+            if (settings.LastName)
+            {
+                return new LastNameBuilder(settings);
+            }
+
+            return new EmptyNameBuilder();
+        }
+
+        private INumberBuilder GetAgeBuilder(GeneratorSettings settings)
+        {
+            if (settings.Age)
+            {
+                return new AgeBuilder(settings);
+            }
+
+            return new EmptyNumberBuilder();
+        }
+
+        private IDateBuilder GetBirthDateBuilder(GeneratorSettings settings)
+        {
+            if (settings.Age)
+            {
+                return new BirthDateBuilder();
+            }
+
+            return new EmptyDateBuilder();
+        }
+
+        private IEmailBuilder GetEmailBuilder(GeneratorSettings settings)
+        {
+            if (settings.Email)
+            {
+                return new HomeEmailBuilder();
+            }
+
+            return new EmptyEmailBuilder();
         }
     }
 }
