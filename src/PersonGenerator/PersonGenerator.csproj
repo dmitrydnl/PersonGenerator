@@ -6,7 +6,7 @@
     <Authors>dmitrydnl</Authors>
     <PackageId>PersonGenerator</PackageId>
     <PackageVersion>1.0.0</PackageVersion>
-    <Description>Person generator</Description>
+    <Description>Generate unique person. Random name, age, birthday, email, etc.</Description>
     <Copyright>Copyright (C) 2020 dmitrydnl</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseUrl>https://github.com/dmitrydnl/PersonGenerator/blob/master/LICENSE</PackageLicenseUrl>
@@ -14,6 +14,8 @@
     <PackageProjectUrl>https://github.com/dmitrydnl/PersonGenerator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dmitrydnl/PersonGenerator</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags>generator people human</PackageTags>
+    <PackageIconUrl>https://user-images.githubusercontent.com/48892069/74156477-75157f00-4c27-11ea-92b1-8e07e9972b0d.jpg</PackageIconUrl>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Builder\" />
