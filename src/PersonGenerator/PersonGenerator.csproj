@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -8,17 +8,13 @@
     <PackageVersion>1.0.0</PackageVersion>
     <Description>Person generator</Description>
     <Copyright>Copyright (C) 2020 dmitrydnl</Copyright>
+    <RepositoryType>git</RepositoryType>
     <PackageLicenseUrl>https://github.com/dmitrydnl/PersonGenerator/blob/master/LICENSE</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/dmitrydnl/PersonGenerator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dmitrydnl/PersonGenerator</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.5-dev.8">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
   <ItemGroup>
     <Folder Include="Builder\" />
     <Folder Include="Builder\NameBuilder\" />
