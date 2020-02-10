@@ -7,6 +7,10 @@
     <PackageId>PersonGenerator</PackageId>
     <PackageVersion>1.0.0</PackageVersion>
     <Description>Person generator</Description>
+    <Copyright>Copyright (C) 2020 dmitrydnl</Copyright>
+    <PackageLicenseUrl>https://github.com/dmitrydnl/PersonGenerator/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/dmitrydnl/PersonGenerator</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
