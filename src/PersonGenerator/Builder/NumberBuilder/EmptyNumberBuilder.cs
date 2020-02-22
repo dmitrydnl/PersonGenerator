@@ -2,9 +2,9 @@
 {
     internal class EmptyNumberBuilder : INumberBuilder
     {
-        public int Build()
+        public int? Build()
         {
-            return 0;
+            return null;
         }
     }
 }

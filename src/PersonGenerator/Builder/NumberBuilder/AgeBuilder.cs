@@ -11,7 +11,7 @@ namespace PersonGenerator.Builder.NumberBuilder
             this.settings = settings;
         }
 
-        public int Build()
+        public int? Build()
         {
             return NumberRandom.GetRandomNumber(settings.MinAge, settings.MaxAge);
         }

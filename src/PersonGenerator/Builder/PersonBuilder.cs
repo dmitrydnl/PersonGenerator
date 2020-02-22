@@ -30,8 +30,8 @@ namespace PersonGenerator.Builder
             string firstName = firstNameBuilder.Build();
             string middleName = middleNameBuilder.Build();
             string lastName = lastNameBuilder.Build();
-            int age = ageBuilder.Build();
-            DateTime birthDate = birthDateBuilder.BuildWithParams(age);
+            int? age = ageBuilder.Build();
+            DateTime? birthDate = age == null ? birthDateBuilder.Build() : birthDateBuilder.BuildWithParams(age.Value);
             string email = emailBuilder.BuildWithParams(firstName, lastName, age.ToString());
 
             return new Person

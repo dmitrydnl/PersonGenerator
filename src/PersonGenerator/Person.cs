@@ -8,8 +8,8 @@ namespace PersonGenerator
         public string FirstName { get; internal set; }
         public string MiddleName { get; internal set; }
         public string LastName { get; internal set; }
-        public int Age { get; internal set; }
-        public DateTime BirthDate { get; internal set; }
+        public int? Age { get; internal set; }
+        public DateTime? BirthDate { get; internal set; }
         public string Email { get; internal set; }
 
         internal Person()
@@ -35,8 +35,15 @@ namespace PersonGenerator
 
         private void PrintAge()
         {
-            Console.WriteLine("Age: " + Age);
-            Console.WriteLine("Birth date: " + BirthDate.ToShortDateString());
+            if (Age != null)
+            {
+                Console.WriteLine("Age: " + Age);
+            }
+
+            if (BirthDate != null)
+            {
+                Console.WriteLine("Birth date: " + BirthDate.Value.ToShortDateString());
+            }
         }
 
         private void PrintEmail()
