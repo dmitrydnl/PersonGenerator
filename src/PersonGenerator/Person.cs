@@ -11,6 +11,7 @@ namespace PersonGenerator
         public int? Age { get; internal set; }
         public DateTime? BirthDate { get; internal set; }
         public string Email { get; internal set; }
+        public string PhoneNumber { get; internal set; }
 
         internal Person()
         {
@@ -22,6 +23,7 @@ namespace PersonGenerator
             PrintName();
             PrintAge();
             PrintEmail();
+            PrintPhoneNumber();
         }
 
         private void PrintName()
@@ -30,7 +32,11 @@ namespace PersonGenerator
             name.Append(!string.IsNullOrEmpty(FirstName) ? FirstName + " " : "");
             name.Append(!string.IsNullOrEmpty(MiddleName) ? MiddleName + " " : "");
             name.Append(!string.IsNullOrEmpty(LastName) ? LastName + " " : "");
-            Console.WriteLine(name.ToString().Trim());
+
+            if (!string.IsNullOrEmpty(name.ToString().Trim()))
+            {
+                Console.WriteLine(name.ToString().Trim());
+            }
         }
 
         private void PrintAge()
@@ -51,6 +57,14 @@ namespace PersonGenerator
             if (!string.IsNullOrEmpty(Email))
             {
                 Console.WriteLine("Email: " + Email);
+            }
+        }
+
+        private void PrintPhoneNumber()
+        {
+            if (!string.IsNullOrEmpty(PhoneNumber))
+            {
+                Console.WriteLine("Phone number: " + PhoneNumber);
             }
         }
     }

@@ -61,7 +61,7 @@ namespace PersonGeneratorTest
             bool ageCorrect = true;
             foreach (Person person in people)
             {
-                ageCorrect = person.Age >= minAge && person.Age <= maxAge;
+                ageCorrect = person.Age.Value >= minAge && person.Age.Value <= maxAge;
                 if (!ageCorrect)
                 {
                     break;
@@ -92,6 +92,30 @@ namespace PersonGeneratorTest
             }
 
             Assert.AreEqual(emailCorrect, true);
+        }
+
+        [Test]
+        public void PhoneNumberTest()
+        {
+            GeneratorSettings settings = new GeneratorSettings
+            {
+                PhoneNumber = true
+            };
+
+            PersonGenerator.PersonGenerator personGenerator = new PersonGenerator.PersonGenerator(settings);
+            List<Person> people = personGenerator.Generate(100);
+            bool phoneNumberCorrect = true;
+            foreach (Person person in people)
+            {
+                phoneNumberCorrect = !string.IsNullOrEmpty(person.PhoneNumber);
+                if (!phoneNumberCorrect)
+                {
+                    break;
+                }
+                person.Print();
+            }
+
+            Assert.AreEqual(phoneNumberCorrect, true);
         }
     }
 }

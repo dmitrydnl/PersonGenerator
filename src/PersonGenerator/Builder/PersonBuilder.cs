@@ -3,6 +3,7 @@ using PersonGenerator.Builder.NameBuilder;
 using PersonGenerator.Builder.NumberBuilder;
 using PersonGenerator.Builder.DateBuilder;
 using PersonGenerator.Builder.EmailBuilder;
+using PersonGenerator.Builder.PhoneNumberBuilder;
 
 namespace PersonGenerator.Builder
 {
@@ -14,6 +15,7 @@ namespace PersonGenerator.Builder
         private readonly INumberBuilder ageBuilder;
         private readonly IDateBuilder birthDateBuilder;
         private readonly IEmailBuilder emailBuilder;
+        private readonly IPhoneNumberBuilder phoneNumberBuilder;
 
         internal PersonBuilder(GeneratorSettings settings)
         {
@@ -23,6 +25,7 @@ namespace PersonGenerator.Builder
             ageBuilder = GetAgeBuilder(settings);
             birthDateBuilder = GetBirthDateBuilder(settings);
             emailBuilder = GetEmailBuilder(settings);
+            phoneNumberBuilder = GetPhoneNumberBuilder(settings);
         }
 
         public Person Build()
@@ -33,6 +36,7 @@ namespace PersonGenerator.Builder
             int? age = ageBuilder.Build();
             DateTime? birthDate = age == null ? birthDateBuilder.Build() : birthDateBuilder.BuildWithParams(age.Value);
             string email = emailBuilder.BuildWithParams(firstName, lastName, age.ToString());
+            string phoneNumber = phoneNumberBuilder.Build();
 
             return new Person
             {
@@ -41,7 +45,8 @@ namespace PersonGenerator.Builder
                 LastName = lastName,
                 Age = age,
                 BirthDate = birthDate,
-                Email = email
+                Email = email,
+                PhoneNumber = phoneNumber
             };
         }
 
@@ -103,6 +108,16 @@ namespace PersonGenerator.Builder
             }
 
             return new EmptyEmailBuilder();
+        }
+
+        private IPhoneNumberBuilder GetPhoneNumberBuilder(GeneratorSettings settings)
+        {
+            if (settings.PhoneNumber)
+            {
+                return new MobilePhoneNumberBuilder();
+            }
+
+            return new EmptyPhoneNumberBuilder();
         }
     }
 }
