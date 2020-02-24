@@ -29,6 +29,7 @@
     <Folder Include="Builder\NumberBuilder\" />
     <Folder Include="Builder\DateBuilder\" />
     <Folder Include="Builder\EmailBuilder\" />
+    <Folder Include="Builder\GenderBuilder\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\english\first_name.txt" />

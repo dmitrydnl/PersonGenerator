@@ -112,10 +112,32 @@ namespace PersonGeneratorTest
                 {
                     break;
                 }
-                person.Print();
             }
 
             Assert.AreEqual(phoneNumberCorrect, true);
+        }
+
+        [Test]
+        public void GenderTest()
+        {
+            GeneratorSettings settings = new GeneratorSettings
+            {
+                Sex = true
+            };
+
+            PersonGenerator.PersonGenerator personGenerator = new PersonGenerator.PersonGenerator(settings);
+            List<Person> people = personGenerator.Generate(100);
+            bool genderCorrect = true;
+            foreach (Person person in people)
+            {
+                genderCorrect = person.Sex != null;
+                if (!genderCorrect)
+                {
+                    break;
+                }
+            }
+
+            Assert.AreEqual(genderCorrect, true);
         }
     }
 }

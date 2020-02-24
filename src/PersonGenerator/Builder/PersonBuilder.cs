@@ -1,5 +1,6 @@
 ﻿using System;
 using PersonGenerator.Builder.NameBuilder;
+using PersonGenerator.Builder.GenderBuilder;
 using PersonGenerator.Builder.NumberBuilder;
 using PersonGenerator.Builder.DateBuilder;
 using PersonGenerator.Builder.EmailBuilder;
@@ -12,6 +13,7 @@ namespace PersonGenerator.Builder
         private readonly INameBuilder firstNameBuilder;
         private readonly INameBuilder middleNameBuilder;
         private readonly INameBuilder lastNameBuilder;
+        private readonly IGenderBuilder genderBuilder;
         private readonly INumberBuilder ageBuilder;
         private readonly IDateBuilder birthDateBuilder;
         private readonly IEmailBuilder emailBuilder;
@@ -22,6 +24,7 @@ namespace PersonGenerator.Builder
             firstNameBuilder = GetFirstNameBuilder(settings);
             middleNameBuilder = GetMiddleNameBuilder(settings);
             lastNameBuilder = GetLastNameBuilder(settings);
+            genderBuilder = GetGenderBuilder(settings);
             ageBuilder = GetAgeBuilder(settings);
             birthDateBuilder = GetBirthDateBuilder(settings);
             emailBuilder = GetEmailBuilder(settings);
@@ -33,6 +36,7 @@ namespace PersonGenerator.Builder
             string firstName = firstNameBuilder.Build();
             string middleName = middleNameBuilder.Build();
             string lastName = lastNameBuilder.Build();
+            Gender? sex = genderBuilder.Build();
             int? age = ageBuilder.Build();
             DateTime? birthDate = age == null ? birthDateBuilder.Build() : birthDateBuilder.BuildWithParams(age.Value);
             string email = emailBuilder.BuildWithParams(firstName, lastName, age.ToString());
@@ -43,6 +47,7 @@ namespace PersonGenerator.Builder
                 FirstName = firstName,
                 MiddleName = middleName,
                 LastName = lastName,
+                Sex = sex,
                 Age = age,
                 BirthDate = birthDate,
                 Email = email,
@@ -78,6 +83,16 @@ namespace PersonGenerator.Builder
             }
 
             return new EmptyNameBuilder();
+        }
+
+        private IGenderBuilder GetGenderBuilder(GeneratorSettings settings)
+        {
+            if (settings.Sex)
+            {
+                return new SexBuilder();
+            }
+
+            return new EmptyGenderBuilder();
         }
 
         private INumberBuilder GetAgeBuilder(GeneratorSettings settings)

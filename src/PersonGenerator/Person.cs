@@ -8,6 +8,7 @@ namespace PersonGenerator
         public string FirstName { get; internal set; }
         public string MiddleName { get; internal set; }
         public string LastName { get; internal set; }
+        public Gender? Sex { get; internal set; }
         public int? Age { get; internal set; }
         public DateTime? BirthDate { get; internal set; }
         public string Email { get; internal set; }
@@ -15,15 +16,32 @@ namespace PersonGenerator
 
         internal Person()
         {
-
+            
         }
 
         public void Print()
         {
             PrintName();
+            PrintSex();
             PrintAge();
             PrintEmail();
             PrintPhoneNumber();
+        }
+
+        private void PrintSex()
+        {
+            if (Sex != null)
+            {
+                switch (Sex.Value)
+                {
+                    case Gender.Male:
+                        Console.WriteLine("Male");
+                        break;
+                    case Gender.Female:
+                        Console.WriteLine("Female");
+                        break;
+                }
+            }
         }
 
         private void PrintName()
