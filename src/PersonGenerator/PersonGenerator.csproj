@@ -35,10 +35,12 @@
     <None Remove="Data\english\first_name.txt" />
     <None Remove="Data\english\last_name.txt" />
     <None Remove="Data\english\middle_name.txt" />
+    <None Remove="Data\english\countries.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data\english\first_name.txt" />
     <EmbeddedResource Include="Data\english\last_name.txt" />
     <EmbeddedResource Include="Data\english\middle_name.txt" />
+    <EmbeddedResource Include="Data\english\countries.txt" />
   </ItemGroup>
 </Project>
