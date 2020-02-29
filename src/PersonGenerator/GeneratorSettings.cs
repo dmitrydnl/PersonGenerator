@@ -10,6 +10,7 @@
         public bool Age { get; set; }
         public int MinAge { get; set; }
         public int MaxAge { get; set; }
+        public bool Country { get; set; }
         public bool Email { get; set; }
         public bool PhoneNumber { get; set; }
     }

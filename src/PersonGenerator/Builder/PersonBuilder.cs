@@ -3,6 +3,7 @@ using PersonGenerator.Builder.NameBuilder;
 using PersonGenerator.Builder.GenderBuilder;
 using PersonGenerator.Builder.NumberBuilder;
 using PersonGenerator.Builder.DateBuilder;
+using PersonGenerator.Builder.CountryBuilder;
 using PersonGenerator.Builder.EmailBuilder;
 using PersonGenerator.Builder.PhoneNumberBuilder;
 
@@ -16,6 +17,7 @@ namespace PersonGenerator.Builder
         private readonly IGenderBuilder genderBuilder;
         private readonly INumberBuilder ageBuilder;
         private readonly IDateBuilder birthDateBuilder;
+        private readonly ICountryBuilder countryBuilder;
         private readonly IEmailBuilder emailBuilder;
         private readonly IPhoneNumberBuilder phoneNumberBuilder;
 
@@ -27,6 +29,7 @@ namespace PersonGenerator.Builder
             genderBuilder = GetGenderBuilder(settings);
             ageBuilder = GetAgeBuilder(settings);
             birthDateBuilder = GetBirthDateBuilder(settings);
+            countryBuilder = GetCountryBuilder(settings);
             emailBuilder = GetEmailBuilder(settings);
             phoneNumberBuilder = GetPhoneNumberBuilder(settings);
         }
@@ -39,6 +42,7 @@ namespace PersonGenerator.Builder
             Gender? sex = genderBuilder.Build();
             int? age = ageBuilder.Build();
             DateTime? birthDate = age == null ? birthDateBuilder.Build() : birthDateBuilder.BuildWithParams(age.Value);
+            string country = countryBuilder.Build();
             string email = emailBuilder.BuildWithParams(firstName, lastName, age.ToString());
             string phoneNumber = phoneNumberBuilder.Build();
 
@@ -50,6 +54,7 @@ namespace PersonGenerator.Builder
                 Sex = sex,
                 Age = age,
                 BirthDate = birthDate,
+                Country = country,
                 Email = email,
                 PhoneNumber = phoneNumber
             };
@@ -113,6 +118,16 @@ namespace PersonGenerator.Builder
             }
 
             return new EmptyDateBuilder();
+        }
+
+        private ICountryBuilder GetCountryBuilder(GeneratorSettings settings)
+        {
+            if (settings.Country)
+            {
+                return new HomeCountryBuilder(settings);
+            }
+
+            return new EmptyCountryBuilder();
         }
 
         private IEmailBuilder GetEmailBuilder(GeneratorSettings settings)

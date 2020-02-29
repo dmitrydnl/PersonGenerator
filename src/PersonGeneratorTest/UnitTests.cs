@@ -139,5 +139,31 @@ namespace PersonGeneratorTest
 
             Assert.AreEqual(genderCorrect, true);
         }
+
+        [Test]
+        public void CountryTest()
+        {
+            GeneratorSettings settings = new GeneratorSettings
+            {
+                Language = Languages.English,
+                Country = true
+            };
+
+            PersonGenerator.PersonGenerator personGenerator = new PersonGenerator.PersonGenerator(settings);
+            List<Person> people = personGenerator.Generate(100);
+            bool countryCorrect = true;
+            foreach (Person person in people)
+            {
+                countryCorrect = !string.IsNullOrEmpty(person.Country);
+
+                if (!countryCorrect)
+                {
+                    break;
+                }
+                person.Print();
+            }
+
+            Assert.AreEqual(countryCorrect, true);
+        }
     }
 }

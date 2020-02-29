@@ -11,6 +11,7 @@ namespace PersonGenerator
         public Gender? Sex { get; internal set; }
         public int? Age { get; internal set; }
         public DateTime? BirthDate { get; internal set; }
+        public string Country { get; internal set; }
         public string Email { get; internal set; }
         public string PhoneNumber { get; internal set; }
 
@@ -24,6 +25,7 @@ namespace PersonGenerator
             PrintName();
             PrintSex();
             PrintAge();
+            PrintCountry();
             PrintEmail();
             PrintPhoneNumber();
         }
@@ -67,6 +69,14 @@ namespace PersonGenerator
             if (BirthDate != null)
             {
                 Console.WriteLine("Birth date: " + BirthDate.Value.ToShortDateString());
+            }
+        }
+
+        private void PrintCountry()
+        {
+            if (!string.IsNullOrEmpty(Country))
+            {
+                Console.WriteLine("Country: " + Country);
             }
         }
 
