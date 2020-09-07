@@ -2,6 +2,6 @@
 {
     internal interface INumberBuilder
     {
-        public int Build();
+        public int? Build();
     }
 }

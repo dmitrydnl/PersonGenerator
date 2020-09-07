@@ -4,14 +4,14 @@ namespace PersonGenerator.Builder.DateBuilder
 {
     internal class EmptyDateBuilder : IDateBuilder
     {
-        public DateTime Build()
+        public DateTime? Build()
         {
-            return DateTime.Now;
+            return null;
         }
 
-        public DateTime BuildWithParams(params int[] list)
+        public DateTime? BuildWithParams(params int[] list)
         {
-            return DateTime.Now;
+            return null;
         }
     }
 }
